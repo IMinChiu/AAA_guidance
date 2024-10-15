@@ -1,3 +1,4 @@
+<!-- #region -->
 # Automation of Aorta Measurement in Ultrasound Images
 
 ## Env setup
@@ -88,24 +89,24 @@ python segment/train.py --project [clearml_project_name] --name [task_name] --im
 
 ## Test video
 
-- Test video: [Ellen_3.mp4](./Ellen_3.mp4)
+- Test video: [Demo.mp4](./Demo.mp4)
 - Tested video (mp4): Converted from the original avi using `ffmpeg`:
 
   ```shell
-  ffmpeg -i "Ellen_3.avi" -vcodec h264 -acodec aac -b:v 500k -strict -2 Ellen_3.mp4`
+  ffmpeg -i "Demo.avi" -vcodec h264 -acodec aac -b:v 500k -strict -2 Demo.mp4`
   ```
 
 ## Demo (POC for 2022 Intel DevCup)
 
 ```shell
 # run demo, using openvino model
-python demo.py --video Ellen_3.mp4 --model weights/yolov5s-v2/best_openvino_model/yolov5-640-v2.xml --plot-mask --img-size 640
+python demo.py --video Demo.mp4 --model weights/yolov5s-v2/best_openvino_model/yolov5-640-v2.xml --plot-mask --img-size 640
 
 # or run the demo using onnx model
-python demo.py --video Ellen_3.mp4 --model weights/yolov5s-v2/yolov5-640.onnx --plot-mask --img-size 640
+python demo.py --video Demo.mp4 --model weights/yolov5s-v2/yolov5-640.onnx --plot-mask --img-size 640
 
 # or run in the headless mode, generating a recording of the demo
-./demo_headless.sh --video Ellen_3.mp4 --model [path/to/model]
+./demo_headless.sh --video Demo.mp4 --model [path/to/model]
 ```
 
 ## Deploy Pyinstaller EXE
@@ -128,3 +129,15 @@ pyinstaller demo.py
 ```
 
 Troubleshooting: If the deployed EXE is not working with error `ValueError: --plotlyjs argument is not a valid URL or file path:`, please move the dist folder to another location with no special characters or Chinese in the path. Reference: <https://github.com/plotly/Kaleido/issues/57>
+
+
+## Paper
+
+https://www.nature.com/articles/s41746-024-01269-4
+
+Chiu, IM., Chen, TY., Zheng, YC. et al. Prospective clinical evaluation of deep learning for ultrasonographic screening of abdominal aortic aneurysms. npj Digit. Med. 7, 282 (2024).
+<!-- #endregion -->
+
+```python
+
+```
